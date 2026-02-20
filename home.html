@@ -25,7 +25,7 @@
 </head>
 
 <body class="min-h-screen max-w-md bg-base-200 mx-auto">
-    <header class="border-b-2  border-gray-300">
+    <header class="border-b-2  border-gray-300 sticky top-0 bg-base-100">
         <section class="w-11/12 mx-auto py-3 flex justify-between items-center">
             <div class="left flex gap-4">
                 <div class="logo w-[60px]">
@@ -43,27 +43,27 @@
     </header>
 
     <section class="w-11/12 mx-auto space-y-4">
-        <h2 class="font-bold text-3xl">Welcome to Pay<span class="text-primary">oo</span></h2>
+        <h2 class="font-bold text-3xl pt-5">Welcome to Pay<span class="text-primary">oo</span></h2>
         <p class="text-neutral/50 pt-3">Enjoy easy and convenient financial services with us. Cashout charge is low and</p>
 
-        <div class="buttons grid grid-cols-3 gap-5">
-            <button class="btn  flex-col h-full py-4 btn-primary btn-soft">
+        <div class="buttons grid grid-cols-2 gap-5">
+            <button onclick="showOnly('add-money')" class="btn  flex-col h-full py-4 btn-primary btn-soft">
                 <img src="./assets/opt-1.png" alt="">
                 <p>Add money</p>
             </button>
-            <button class="btn  flex-col h-full py-4 btn-primary btn-soft">
+            <button onclick="showOnly('cashout')" class="btn  flex-col h-full py-4 btn-primary btn-soft">
                 <img src="./assets/opt-2.png" alt="">
                 <p>Cashout</p>
             </button>
-            <button class="btn  flex-col h-full py-4 btn-primary btn-soft">
+            <button onclick="showOnly('transfer')" class="btn  flex-col h-full py-4 btn-primary btn-soft">
                 <img src="./assets/opt-3.png" alt="">
                 <p>Send Money</p>
             </button>
-            <button class="btn  flex-col h-full py-4 btn-primary btn-soft">
+            <button onclick="showOnly('get-bonus')" class="btn  flex-col h-full py-4 btn-primary btn-soft">
                 <img src="./assets/opt-4.png" alt="">
                 <p>Get Bonus</p>
             </button>
-            <button class="btn  flex-col h-full py-4 btn-primary btn-soft">
+            <button onclick="showOnly('pay-bill')" class="btn  flex-col h-full py-4 btn-primary btn-soft">
                 <img src="./assets/opt-5.png" alt="">
                 <p>Pay Bill</p>
             </button>
@@ -75,7 +75,55 @@
     </section>
 
 
-    <section id="cashout" class="w-11/12 mx-auto py-5">
+
+
+    <!-- Add-money -->
+    <section id="add-money" class="w-11/12 mx-auto py-5 hidden">
+        <h2 class="text-2xl font-bold">Add-Money</h2>
+        <div class="form pt-5">
+            <div class="card bg-base-100 w-full shadow rounded-2xl">
+                <div class="card-body">
+                    <fieldset class="fieldset">
+                        <label class="label text-neutral font-bold">Select Bank</label>
+                        <select id="add-money-bank" class="select w-full bg-base-200 rounded-full">
+                            <option disabled selected>Select a Bank</option>
+                            <option value="DBBL">DBBL</option>
+                            <option value="IBBL">IBBL</option>
+                            <option value="City Bank">City Bank</option>
+                        </select>
+
+                        <br>
+
+                        <label class="label text-neutral font-bold">Bank Account Number</label>
+                        <input id="add-money-number" maxlength="11" minlength="11" type="text" class="input rounded-full w-full"
+                            placeholder="Enter Bank 11 Digit Number" />
+        
+                        <br>
+
+                        <label class="label text-neutral font-bold">Amount to Add</label>
+                        <input id="add-money-amount" type="number" class="input rounded-full w-full"
+                            placeholder="Enter Amount to Add" />
+        
+                        <br>
+        
+                        <label class="label text-neutral font-bold">4 Digit Pin</label>
+                        <input id="add-money-pin" type="password" class="input rounded-full w-full"
+                            placeholder="Enter 4 Digit Pin" />
+        
+                        <br>
+
+                        <button id="add-money-btn" class="btn btn-primary mt-4 rounded-full">Add Money</button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- cashout section -->
+    <section id="cashout" class="w-11/12 mx-auto py-5 hidden">
         <h2 class="text-2xl font-bold">Cashout</h2>
         <div class="form pt-5">
             <div class="card bg-base-100 w-full shadow rounded-2xl">
@@ -92,12 +140,122 @@
                         
                         <label class="label text-neutral font-bold">4 Digit Pin</label>
                         <input id="cashout-pin" type="password" class="input rounded-full w-full" placeholder="Enter 4 Digit Pin" />
+
                         <button id="cashout-btn" class="btn btn-primary mt-4 rounded-full">Withdraw Money</button>
                     </fieldset>
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
+    <!-- Transfer Money -->
+    <section id="transfer" class="w-11/12 mx-auto py-5 hidden">
+        <h2 class="text-2xl font-bold">Transfer Money</h2>
+        <div class="form pt-5">
+            <div class="card bg-base-100 w-full shadow rounded-2xl">
+                <div class="card-body">
+                    <fieldset class="fieldset">
+                        <label class="label text-neutral font-bold">User Account Number</label>
+                        <input id="transfer-number" maxlength="11" minlength="11" type="text"
+                            class="input rounded-full w-full" placeholder="Enter 11 digit number" />
+    
+                        <label class="label text-neutral font-bold">Amount</label>
+                        <input id="transfer-amount" type="number" class="input rounded-full w-full"
+                            placeholder="Enter amount to transfer" />
+    
+    
+                        <label class="label text-neutral font-bold">4 Digit Pin</label>
+                        <input id="transfer-pin" type="password" class="input rounded-full w-full"
+                            placeholder="Enter 4 Digit Pin" />
+    
+                        <button id="transfer-btn" class="btn btn-primary mt-4 rounded-full">Send Now</button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Pay Bill -->
+    <section id="pay-bill" class="w-11/12 mx-auto py-5 hidden">
+        <h2 class="text-2xl font-bold">Pay Bill</h2>
+        <div class="form pt-5">
+            <div class="card bg-base-100 w-full shadow rounded-2xl">
+                <div class="card-body">
+                    <fieldset class="fieldset">
+                        <label class="label text-neutral font-bold">Select To Pay</label>
+                        <select id="pay-money-bank" class="select w-full bg-base-200 rounded-full">
+                            <option disabled selected>Select Utility</option>
+                            <option value="Gas">Gas</option>
+                            <option value="Internet">Internet</option>
+                            <option value="Water">Water</option>
+                        </select>
+    
+                        <br>
+    
+                        <label class="label text-neutral font-bold">Biller Account Number</label>
+                        <input id="pay-money-number" maxlength="11" minlength="11" type="text"
+                            class="input rounded-full w-full" placeholder="Enter account number" />
+    
+                        <br>
+    
+                        <label class="label text-neutral font-bold">Amount to Pay</label>
+                        <input id="pay-money-amount" type="number" class="input rounded-full w-full"
+                            placeholder="Enter Amount to Pay" />
+    
+                        <br>
+    
+                        <label class="label text-neutral font-bold">Pin Number</label>
+                        <input id="pay-money-pin" type="password" class="input rounded-full w-full"
+                            placeholder="Enter 4 Digit Pin" />
+    
+                        <br>
+    
+                        <button id="pay-money-btn" class="btn btn-primary mt-4 rounded-full">Pay Now</button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Get Bonous -->
+    <section id="get-bonus" class="w-11/12 mx-auto py-5 hidden">
+        <h2 class="text-2xl font-bold">Get Bonus</h2>
+        <div class="form pt-5">
+            <div class="card bg-base-100 w-full shadow rounded-2xl">
+                <div class="card-body">
+                    <fieldset class="fieldset">
+                        <label class="label text-neutral font-bold">Enter Bonus Coupon</label>
+                        <input id="coupon" type="text"
+                            class="input rounded-full w-full" placeholder="Enter your coupon" />
+    
+                        <button id="bonus-btn" class="btn btn-primary mt-4 rounded-full">Get Bonus</button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script src="./script/bonus.js"></script>
+
+    <script src="./script/pay-bill.js"></script>
+
+    <script src="./script/transfer.js"></script>
+
+    <script src="./script/machine.js"></script>
+
+    <script src="./script/add-money.js"></script>
 
     <script src="./script/cashout.js"></script>
     

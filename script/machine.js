@@ -29,6 +29,7 @@ function showOnly(id) {
     const transfer = document.getElementById("transfer");
     const payBill = document.getElementById("pay-bill");
     const getBonus = document.getElementById("get-bonus");
+    const transection = document.getElementById("history");
     // console.log(`add Money - ${addmoney} , cashout - ${cashout}`);
     // sobai k hide kore dao
     addmoney.classList.add("hidden");
@@ -36,6 +37,7 @@ function showOnly(id) {
     transfer.classList.add("hidden");
     payBill.classList.add("hidden");
     getBonus.classList.add("hidden");
+    transection.classList.add("hidden");
     // id wala element k show koro
     const selected = document.getElementById(id);
     selected.classList.remove("hidden");

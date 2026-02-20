@@ -1,8 +1,8 @@
 document.getElementById("pay-money-btn")
     .addEventListener("click", function() {
         // 1. bank account get
-        const bankAccount = getValueFromInput("pay-money-bank");
-        if(bankAccount == "Select Utility"){
+        const utility = getValueFromInput("pay-money-bank");
+        if(utility == "Select Utility"){
             alert("please select Utility");
             return;
         }
@@ -29,9 +29,26 @@ document.getElementById("pay-money-btn")
         if(pin === "4312") {
             // 5-1. true:::show the alert > set balence
             alert(`Pay Money Successful from 
-                ${bankAccount} 
+                ${utility} 
                 at ${new Date()}`);
             setBalance(newBalance);
+
+            // 1. History container k dhore niye asbo
+            const history  = document.getElementById("history-container");
+
+            // 2. New div create korbo
+            const newHistory = document.createElement("div");
+
+            // 3. new div inner HTML add korbo
+            newHistory.innerHTML = `
+            <div class="transection-card p-5 bg-base-100">
+           Bill Pay ${amount} taka Successful for ${utility} to 
+                ${accno} at ${new Date()}
+            </div>
+            `
+
+            // history container e new div append kore felbo
+            history.append(newHistory);
         } else {
             // 5-2. false:::show an error alert > return
             alert("Invalid Pin");

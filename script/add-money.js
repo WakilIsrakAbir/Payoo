@@ -28,6 +28,23 @@ document.getElementById("add-money-btn")
                 ${bankAccount} 
                 at ${new Date()}`);
             setBalance(newBalance);
+
+            // 1. History container k dhore niye asbo
+            const history  = document.getElementById("history-container");
+
+            // 2. New div create korbo
+            const newHistory = document.createElement("div");
+
+            // 3. new div inner HTML add korbo
+            newHistory.innerHTML = `
+            <div class="transection-card p-5 bg-base-100">
+            Add Money Successful from 
+                ${bankAccount} , acc-no ${accno} at ${new Date()}
+            </div>
+            `
+
+            // history container e new div append kore felbo
+            history.append(newHistory);
         } else {
             // 5-2. false:::show an error alert > return
             alert("Invalid Pin");
